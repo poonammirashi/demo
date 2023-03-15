@@ -1,8 +1,11 @@
-localStorage.setItem('userdetailsemailid', 'name,email,number');
+
 var button = document.querySelector('.btn');
-console.log(localStorage.getItem('userdetailsemailid'));
+
 
 button.addEventListener('click', addevent);
+var btn=document.createElement('button');
+
+var itemlist = document.querySelector('.items')
 
 function addevent(e) {
     e.preventDefault();
@@ -16,13 +19,24 @@ function addevent(e) {
     }
     var obj_serialized = JSON.stringify(obj);
     localStorage.setItem(email, obj_serialized);
-
-    var itemlist = document.querySelector('.items')
+    btn.addEventListener('click', removeitem);
+    
     var li = document.createElement('li');
+    
+    btn.appendChild(document.createTextNode('delete'));
 
     li.className = 'item';
     li.appendChild(document.createTextNode(name + '-' + email +'-' + (num)));
+    li.appendChild(btn);
     itemlist.appendChild(li)
     email = '';
     name = '';
+
+function removeitem(e){
+    e.preventDefault();
+    var li=e.target.parentElement;
+    var email = document.getElementById('email').value;
+    itemlist.removeChild(li);
+    localStorage.removeItem(email);
+}
 }
