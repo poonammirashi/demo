@@ -45,11 +45,7 @@ function addevent(e) {
     edit.appendChild(document.createTextNode('edit'));
     edit.onclick = (e) => {
         e.preventDefault();
-        console.log(e.target.classList)
-        //var li = e.target.parentElement;
-        
-            
-            var li = e.target.parentElement;
+          var li = e.target.parentElement;
             let editobjkey = li.className;
             let obj = JSON.parse(localStorage.getItem(email))
             console.log(obj)
