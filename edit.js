@@ -36,19 +36,29 @@ function addevent(e) {
         //var li = e.target.parentElement;
         //var email = document.getElementById('email').value;
         itemlist.removeChild(li);
-        localStorage.removeItem(obj.email);
+        localStorage.removeItem(obj.email_is);
     }
 
     var edit = document.createElement('button');
+    //edit.ClassName='item';
+    //edit.value='edit';
     edit.appendChild(document.createTextNode('edit'));
-    edit.onclick = () => {
-        //e.preventDefault();
+    edit.onclick = (e) => {
+        e.preventDefault();
+        console.log(e.target.classList)
         //var li = e.target.parentElement;
-        itemlist.removeChild(li);
-        localStorage.removeItem(obj.email);
-        document.getElementById('name').value = obj.name
-        document.getElementById('email').value = obj.email;
-        document.getElementById('number').value = obj.num
+        
+            
+            var li = e.target.parentElement;
+            let editobjkey = li.className;
+            let obj = JSON.parse(localStorage.getItem(email))
+            console.log(obj)
+            document.getElementById('name').value = obj.person_is;
+            document.getElementById('email').value = obj.email_is;
+            document.getElementById('number').value = obj.number_is;
+            itemlist.removeChild(li);
+            localStorage.removeItem(obj.email_is);
+        
     }
     li.appendChild(btn);
     li.appendChild(edit);
